@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-HK" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳儀興 Chan Yee Hing | 六十年匠心 潮味傳承</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        heritageGreen: '#1a332c',
+                        heritageGold: '#c5a059',
+                        heritageGoldHover: '#b08b47',
+                        paperBg: '#f9f6f0',
+                        deepRed: '#8b2626'
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="paper-texture antialiased selection:bg-heritageGold selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-[#f9f6f0]/90 backdrop-blur-md border-b border-heritageGold/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center space-x-3 group">
+                <div class="w-14 h-14 rounded-full border-2 border-heritageGold flex items-center justify-center bg-deepRed/10 shadow-sm transition-transform group-hover:scale-105">
+                    <span class="chinese-serif font-bold text-deepRed text-xl">陳</span>
+                </div>
+                <div>
+                    <span class="chinese-serif font-bold text-xl tracking-wider text-heritageGreen block">陳儀興</span>
+                    <span class="text-[10px] tracking-widest text-heritageGold font-semibold uppercase">Chan Yee Hing</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="chinese-serif text-sm font-semibold text-heritageGreen hover:text-heritageGold transition-colors">首頁 <span class="block text-[10px] text-center text-gray-400 font-sans">Home</span></a>
+                <a href="#story" class="chinese-serif text-sm font-medium text-gray-700 hover:text-heritageGold transition-colors">品牌故事 <span class="block text-[10px] text-center text-gray-400 font-sans">Our Story</span></a>
+                <a href="#dishes" class="chinese-serif text-sm font-medium text-gray-700 hover:text-heritageGold transition-colors">招牌菜 <span class="block text-[10px] text-center text-gray-400 font-sans">Signature</span></a>
+                <a href="#locations" class="chinese-serif text-sm font-medium text-gray-700 hover:text-heritageGold transition-colors">分店介紹 <span class="block text-[10px] text-center text-gray-400 font-sans">Locations</span></a>
+                <a href="#products" class="chinese-serif text-sm font-medium text-gray-700 hover:text-heritageGold transition-colors">集團副產品 <span class="block text-[10px] text-center text-gray-400 font-sans">Sub-brands</span></a>
+            </nav>
+
+            <!-- CTA Buttons -->
+            <div class="hidden md:flex items-center space-x-3">
+                <button onclick="openMembershipModal()" class="border border-heritageGold text-heritageGold hover:bg-heritageGold hover:text-white px-4 py-2 rounded shadow-sm transition-all duration-300 font-medium chinese-serif tracking-wider text-sm">
+                    加入會員
+                </button>
+                <button onclick="openBookingModal()" class="bg-heritageGold hover:bg-heritageGoldHover text-white px-5 py-2 rounded shadow-md transition-all duration-300 font-medium chinese-serif tracking-wider text-sm">
+                    立即訂座
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-heritageGreen focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#f9f6f0] border-b border-heritageGold/20 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#home" onclick="toggleMobileMenu()" class="block chinese-serif text-lg font-medium text-heritageGreen">首頁</a>
+            <a href="#story" onclick="toggleMobileMenu()" class="block chinese-serif text-lg font-medium text-gray-700">品牌故事</a>
+            <a href="#dishes" onclick="toggleMobileMenu()" class="block chinese-serif text-lg font-medium text-gray-700">招牌菜</a>
+            <a href="#locations" onclick="toggleMobileMenu()" class="block chinese-serif text-lg font-medium text-gray-700">分店介紹</a>
+            <a href="#products" onclick="toggleMobileMenu()" class="block chinese-serif text-lg font-medium text-gray-700">集團副產品</a>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="openMembershipModal(); toggleMobileMenu();" class="w-full border border-heritageGold text-heritageGold py-2.5 rounded chinese-serif font-medium text-sm">加入會員</button>
+                <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full bg-heritageGold text-white py-2.5 rounded chinese-serif font-medium text-sm">立即訂座</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-heritageGold tracking-widest text-sm uppercase chinese-serif font-semibold mb-3 block">Est. 1964 • 香港老字號</span>
+                <h1 class="chinese-serif text-4xl sm:text-5xl md:text-6xl font-bold text-heritageGreen leading-tight mb-6">
+                    「六十年匠心，潮味傳承」
+                </h1>
+                <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto chinese-serif">
+                    始於1964年，走過一甲子歲月。我們堅持古法炮製正宗潮州滷水與手工菜，將家鄉的每一口鮮甜原汁原味帶給您。
+                </p>
+            </div>
+
+            <!-- Hero Image Banner -->
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80" alt="Master chef carving marinated goose" class="w-full h-[350px] sm:h-[500px] object-cover transform hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1600x900/1a332c/ffffff?text=Chan+Yee+Hing'">
+                <div class="absolute bottom-6 left-6 right-6 z-20 flex flex-col sm:flex-row justify-between items-start sm:items-end text-white">
+                    <div>
+                        <span class="bg-heritageGold text-white text-xs px-3 py-1 rounded mb-2 inline-block chinese-serif font-medium">鎮店之寶</span>
+                        <h2 class="chinese-serif text-2xl sm:text-3xl font-bold">招牌潮式滷水鵝</h2>
+                    </div>
+                    <a href="#dishes" class="mt-4 sm:mt-0 inline-flex items-center space-x-2 text-heritageGold hover:text-white transition-colors chinese-serif font-medium">
+                        <span>探索更多菜式</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section id="story" class="py-20 bg-white/60 border-t border-b border-heritageGold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Vintage Image Container with Frame -->
+                <div class="relative p-4 bg-white rounded-xl shadow-xl border border-heritageGold/30 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+                    <div class="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-heritageGold"></div>
+                    <div class="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-heritageGold"></div>
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Historical street food stall in Hong Kong" class="w-full h-[400px] object-cover filter sepia-[0.3] rounded" onerror="this.src='https://placehold.co/800x600/f0e6d2/2c2c2c?text=Vintage+Archive+1964'">
+                    <p class="text-center text-xs text-gray-500 mt-3 chinese-serif">上世紀六十年代街頭小檔起家之珍貴歷史鏡頭</p>
+                </div>
+
+                <!-- Story Text -->
+                <div class="space-y-6">
+                    <div class="inline-flex items-center space-x-2 text-heritageGold chinese-serif font-semibold text-sm">
+                        <i class="fa-solid fa-seedling"></i>
+                        <span>六十年歲月沉澱</span>
+                    </div>
+                    <h2 class="chinese-serif text-3xl sm:text-4xl font-bold text-heritageGreen">
+                        「一甲子的堅持，由潮州到香港」
+                    </h2>
+                    <p class="text-gray-600 chinese-serif leading-relaxed text-base sm:text-lg">
+                        由街頭小檔到今日的口碑老店，陳儀興始終堅持古法炮製正宗潮州風味。六十年來，變的是時代與環境，不變的是對傳統手藝的執著與對食材的嚴選。每一道菜，都承載著幾代人的味覺記憶與人情溫度。
+                    </p>
+                    <div class="grid grid-cols-3 gap-6 pt-4 border-t border-gray-200">
+                        <div>
+                            <span class="chinese-serif block text-3xl font-bold text-heritageGold">60+</span>
+                            <span class="text-xs text-gray-500 chinese-serif">年老字號傳承</span>
+                        </div>
+                        <div>
+                            <span class="chinese-serif block text-3xl font-bold text-heritageGold">3</span>
+                            <span class="text-xs text-gray-500 chinese-serif">家精選分店</span>
+                        </div>
+                        <div>
+                            <span class="chinese-serif block text-3xl font-bold text-heritageGold">100%</span>
+                            <span class="text-xs text-gray-500 chinese-serif">正宗潮州風味</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Dishes Section -->
+    <section id="dishes" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-heritageGold tracking-widest text-sm uppercase chinese-serif font-semibold mb-2 block">Signature Selection</span>
+                <h2 class="chinese-serif text-3xl sm:text-4xl font-bold text-heritageGreen">
+                    「招牌精選 · 潮州風味」
+                </h2>
+                <div class="w-16 h-0.5 bg-heritageGold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Dishes Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Dish 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-heritageGold/20 hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Marinated Goose Slice" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/e2d8c5/2c2c2c?text=滷水鵝片'">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="chinese-serif text-2xl font-bold text-heritageGreen mb-2">滷水鵝片</h3>
+                        <p class="text-gray-600 text-sm chinese-serif">皮滑肉嫩，秘製滷水香濃入味，回味無窮。</p>
+                        <span class="inline-block mt-4 text-heritageGold font-semibold text-sm chinese-serif">推薦必點</span>
+                    </div>
+                </div>
+
+                <!-- Dish 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-heritageGold/20 hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Chiu Chow Oyster Omelette" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/e2d8c5/2c2c2c?text=潮式蠔烙'">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="chinese-serif text-2xl font-bold text-heritageGreen mb-2">潮式蠔烙</h3>
+                        <p class="text-gray-600 text-sm chinese-serif">外脆內嫩，鮮美蠔仔與蛋香完美交融。</p>
+                        <span class="inline-block mt-4 text-heritageGold font-semibold text-sm chinese-serif">傳統手工</span>
+                    </div>
+                </div>
+
+                <!-- Dish 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-heritageGold/20 hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Fried Taro with Sugar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/e2d8c5/2c2c2c?text=反沙芋'">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="chinese-serif text-2xl font-bold text-heritageGreen mb-2">反沙芋</h3>
+                        <p class="text-gray-600 text-sm chinese-serif">外層白霜酥脆，內裡香綿軟糯，經典甜品。</p>
+                        <span class="inline-block mt-4 text-heritageGold font-semibold text-sm chinese-serif">經典名菜</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="py-20 bg-white/60 border-t border-heritageGold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-heritageGold tracking-widest text-sm uppercase chinese-serif font-semibold mb-2 block">Our Branches</span>
+                <h2 class="chinese-serif text-3xl sm:text-4xl font-bold text-heritageGreen">
+                    「分店介紹 · 歡迎蒞臨」
+                </h2>
+                <div class="w-16 h-0.5 bg-heritageGold mx-auto mt-4"></div>
+            </div>
+
+            <!-- Locations Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
+                <!-- San Po Kong Main Branch -->
+                <div class="bg-white p-8 rounded-xl shadow-md border border-heritageGold/20 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="chinese-serif text-xl font-bold text-heritageGreen">新蒲崗總店 (陳儀興飯店)</h3>
+                            <i class="fa-solid fa-location-dot text-heritageGold text-xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 chinese-serif leading-relaxed">
+                            九龍新蒲崗崇齡街 40 號地下 (G/F, 40 Shung Ling St, San Po Kong)
+                        </p>
+                        <div class="space-y-2 text-xs text-gray-500 chinese-serif mb-6">
+                            <p><i class="fa-solid fa-phone mr-2 text-heritageGold"></i>+852 2321 5398</p>
+                            <p><i class="fa-regular fa-clock mr-2 text-heritageGold"></i>星期一至日 16:00 - 00:00</p>
+                            <p><i class="fa-solid fa-star mr-2 text-heritageGold"></i>Google 評分 3.9 (732+ 評價)</p>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full border border-heritageGold text-heritageGold hover:bg-heritageGold hover:text-white py-2 rounded transition-colors text-sm chinese-serif font-medium">
+                        立即訂座
+                    </button>
+                </div>
+
+                <!-- Kowloon City Branch -->
+                <div class="bg-white p-8 rounded-xl shadow-md border border-heritageGold/20 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="chinese-serif text-xl font-bold text-heritageGreen">九龍城分店</h3>
+                            <i class="fa-solid fa-location-dot text-heritageGold text-xl"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 chinese-serif leading-relaxed">
+                            九龍九龍城太子道西 380 號地舖
+                        </p>
+                        <div class="space-y-2 text-xs text-gray-500 chinese-serif mb-6">
+                            <p><i class="fa-solid fa-phone mr-2 text-heritageGold"></i>+852 2382 4467</p>
+                            <p><i class="fa-regular fa-clock mr-2 text-heritageGold"></i>11:00 am - 11:00 pm</p>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full border border-heritageGold text-heritageGold hover:bg-heritageGold hover:text-white py-2 rounded transition-colors text-sm chinese-serif font-medium">
+                        立即訂座
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Group Sub-products & Brands Section -->
+    <section id="products" class="py-20 bg-[#f4efe6] border-t border-heritageGold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-heritageGold tracking-widest text-sm uppercase chinese-serif font-semibold mb-2 block">Group Sub-Brands & Products</span>
+                <h2 class="chinese-serif text-3xl sm:text-4xl font-bold text-heritageGreen">
+                    「集團副產品 · 匠心延伸」
+                </h2>
+                <div class="w-16 h-0.5 bg-heritageGold mx-auto mt-4"></div>
+                <p class="text-gray-600 text-sm mt-4 chinese-serif">把六十年潮州好滋味帶回家，傳承經典伴手禮與零售系列。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Sub-product 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-heritageGold/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=600&q=80" alt="Chiu Chow Marinated Sauce Gift Box" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a332c/ffffff?text=秘製滷水禮盒'">
+                            <span class="absolute top-4 left-4 bg-deepRed text-white text-xs px-2.5 py-1 rounded chinese-serif">皇牌伴手禮</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="chinese-serif text-xl font-bold text-heritageGreen mb-2">陳儀興秘製滷水汁禮盒</h3>
+                            <p class="text-gray-600 text-sm chinese-serif leading-relaxed">
+                                嚴選數十種名貴中藥材與香料，依循六十年古法熬製。在家也能輕鬆炮製正宗潮味鵝肉、豆腐與雞翼。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="openMembershipModal()" class="w-full bg-heritageGreen text-heritageGold hover:bg-heritageGreen/90 py-2.5 rounded text-sm chinese-serif font-medium transition-colors">
+                            了解詳情 / 會員專享優惠
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sub-product 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-heritageGold/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?auto=format&fit=crop&w=600&q=80" alt="Chiu Chow Chili Oil" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a332c/ffffff?text=潮州香辣菜圃辣椒醬'">
+                            <span class="absolute top-4 left-4 bg-heritageGold text-white text-xs px-2.5 py-1 rounded chinese-serif">人氣暢銷</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="chinese-serif text-xl font-bold text-heritageGreen mb-2">潮州招牌香辣菜圃辣椒醬</h3>
+                            <p class="text-gray-600 text-sm chinese-serif leading-relaxed">
+                                選用上等潮汕菜圃與朝天椒手工炒製，香氣撲鼻、層次分明，拌飯、拌麵或佐餐皆為絕配。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="openMembershipModal()" class="w-full bg-heritageGreen text-heritageGold hover:bg-heritageGreen/90 py-2.5 rounded text-sm chinese-serif font-medium transition-colors">
+                            了解詳情 / 會員專享優惠
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sub-product 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-heritageGold/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=600&q=80" alt="Traditional Chiu Chow pastries" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1a332c/ffffff?text=潮式酥餅禮盒'">
+                            <span class="absolute top-4 left-4 bg-heritageGold text-white text-xs px-2.5 py-1 rounded chinese-serif">節慶限定</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="chinese-serif text-xl font-bold text-heritageGreen mb-2">手作潮式朥餅與酥點禮盒</h3>
+                            <p class="text-gray-600 text-sm chinese-serif leading-relaxed">
+                                承傳傳統手藝，外皮酥脆化渣，內餡精選頂級烏豆沙與鹹蛋黃，送禮自用皆顯高貴心意。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="openMembershipModal()" class="w-full bg-heritageGreen text-heritageGold hover:bg-heritageGreen/90 py-2.5 rounded text-sm chinese-serif font-medium transition-colors">
+                            了解詳情 / 會員專享優惠
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-heritageGreen text-white py-12 border-t border-heritageGold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full border border-heritageGold flex items-center justify-center bg-deepRed/20">
+                    <span class="chinese-serif font-bold text-heritageGold text-lg">陳</span>
+                </div>
+                <div>
+                    <span class="chinese-serif font-bold text-lg tracking-wider block">陳儀興 Chan Yee Hing</span>
+                    <span class="text-xs text-gray-400">六十年正宗潮州菜老字號</span>
+                </div>
+            </div>
+
+            <div class="flex space-x-6 text-xl">
+                <a href="#" class="text-heritageGold hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-heritageGold hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-heritageGold hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+
+            <div class="text-center md:text-right text-xs text-gray-400 chinese-serif">
+                <p>&copy; 2026 陳儀興版權所有</p>
+                <p class="mt-1">60 Years of Heritage Chiu Chow Cuisine</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-paperBg rounded-2xl max-w-md w-full p-8 shadow-2xl border-2 border-heritageGold relative animate-scale-up">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-500 hover:text-heritageGreen text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <span class="chinese-serif text-heritageGold text-xs uppercase tracking-widest block mb-1">Reservation</span>
+                <h3 class="chinese-serif text-2xl font-bold text-heritageGreen">線上訂座</h3>
+            </div>
+
+            <form onsubmit="handleBooking(event)" class="space-y-4 chinese-serif">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">選擇分店</label>
+                    <select id="branch" required class="w-full px-3 py-2 border border-gray-300 rounded bg-white text-sm focus:outline-none focus:border-heritageGold">
+                        <option value="香港店">香港店 (南朗山道)</option>
+                        <option value="九龍店">九龍店 (九龍城太子道西)</option>
+                        <option value="新界店">新界店 (沙田新城市廣場)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">貴賓姓名</label>
+                    <input type="text" id="name" required placeholder="請輸入您的稱呼" class="w-full px-3 py-2 border border-gray-300 rounded bg-white text-sm focus:outline-none focus:border-heritageGold">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">聯絡電話</label>
+                    <input type="tel" id="phone" required placeholder="例如: +852 9123 4567" class="w-full px-3 py-2 border border-gray-300 rounded bg-white text-sm focus:outline-none focus:border-heritageGold">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">用餐日期</label>
+                        <input type="date" id="date" required class="w-full px-3 py-2 border border-gray-300 rounded bg-white text-sm focus:outline-none focus:border-heritageGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">用餐人數</label>
+                        <select id="guests" class="w-full px-3 py-2 border border-gray-300 rounded bg-white text-sm focus:outline-none focus:border-heritageGold">
+                            <option value="2位">2 位</option>
+                            <option value="4位">4 位</option>
+                            <option value="6位">6 位</option>
+                            <option value="8位或以上">8 位或以上</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-heritageGold hover:bg-heritageGoldHover text-white py-3 rounded font-bold chinese-serif transition-colors mt-2 shadow-md">
+                    確認送出訂座
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message Box -->
+    <div id="success-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-paperBg rounded-2xl max-w-sm w-full p-8 shadow-2xl border-2 border-heritageGold text-center chinese-serif">
+            <div class="w-16 h-16 bg-heritageGreen text-heritageGold rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-heritageGreen mb-2">訂座成功！</h3>
+            <p id="success-msg" class="text-gray-600 text-sm mb-6">我們已收到您的訂座申請，將會有專人與您電話確認。</p>
+            <button onclick="closeSuccessModal()" class="bg-heritageGold hover:bg-heritageGoldHover text-white px-6 py-2 rounded font-bold transition-colors">
+                我知道了
+            </button>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
+</html>
