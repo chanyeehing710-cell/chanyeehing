@@ -1,47 +1,79 @@
-// Mobile menu toggle
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
-}
-
-// Modal Controls
-function openBookingModal() {
-    document.getElementById('booking-modal').classList.remove('hidden');
-}
-
-function closeBookingModal() {
-    document.getElementById('booking-modal').classList.add('hidden');
-}
-
-// 原代碼有 openMembershipModal，但頁面沒有該modal，補上空函數防止報錯
-function openMembershipModal(){
-    alert("會員模組尚未實作");
-}
-
-function handleBooking(event) {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const branch = document.getElementById('branch').value;
-    const date = document.getElementById('date').value;
-    const guests = document.getElementById('guests').value;
-
-    document.getElementById('success-msg').innerText = `感謝 ${name} 先生/小姐！您已成功預訂 ${branch} (${date}，${guests})。我們將盡快與您聯繫。`;
-    
-    closeBookingModal();
-    document.getElementById('success-modal').classList.remove('hidden');
-    event.target.reset();
-}
-
-function closeSuccessModal() {
-    document.getElementById('success-modal').classList.add('hidden');
-}
-
-// Set minimum date for booking to today
-document.addEventListener('DOMContentLoaded', () => {
-    const today = new Date().toISOString().split('T')[0];
-    const dateInput = document.getElementById('date');
-    if(dateInput) {
-        dateInput.min = today;
-        dateInput.value = today;
+// Tailwind configuration
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                heritageGreen: '#1A332C',
+                heritageGreenLight: '#264B41',
+                heritageGold: '#C5A059',
+                heritageGoldHover: '#B08B47',
+                paperBg: '#FAF6EF',
+                paperCard: '#FFFFFF',
+                warmSand: '#F2EADC',
+                deepRed: '#8B2626',
+                charcoal: '#2C2C2C'
+            },
+            fontFamily: {
+                serif: ['"Noto Serif TC"', 'serif'],
+                sans: ['"Plus Jakarta Sans"', '"Noto Sans TC"', 'sans-serif']
+            }
+        }
     }
-});
+};
+
+// Toggle Mobile Menu
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden');
+        if (mobileMenu.classList.contains('hidden')) {
+            menuIcon.className = 'fa-solid fa-bars text-2xl';
+        } else {
+            menuIcon.className = 'fa-solid fa-xmark text-2xl';
+        }
+    }
+}
+
+// Filter Dishes
+function filterDishes(category) {
+    const cards = document.querySelectorAll('.dish-card');
+    const buttons = document.querySelectorAll('.dish-tab-btn');
+
+    // Update active button state
+    buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-heritageGreen', 'text-white', 'shadow');
+        btn.classList.add('bg-white', 'text-gray-700');
+    });
+
+    const activeBtn = document.getElementById(`btn-dish-${category}`);
+    if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-heritageGreen', 'text-white', 'shadow');
+        activeBtn.classList.remove('bg-white', 'text-gray-700');
+    }
+
+    // Show/Hide Cards
+    cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Open Booking Modal Placeholder
+function openBookingModal() {
+    alert('線上訂座功能加載中...');
+}
+
+// Open Membership Modal Placeholder
+function openMembershipModal() {
+    alert('會員系統登記中...');
+}
+
+// Open Dish Detail Modal Placeholder
+function openDishDetail(name, price, description, image) {
+    alert(`${name} - ${price}\n\n${description}`);
+}
