@@ -1,22 +1,51 @@
 body {
-    background-color: #f9f6f0;
-    color: #2c2c2c;
+    background-color: #FAF6EF;
+    color: #2C2C2C;
     font-family: 'Plus Jakarta Sans', 'Noto Serif TC', sans-serif;
 }
+
 .chinese-serif {
     font-family: 'Noto Serif TC', serif;
 }
-/* Subtle paper texture simulation */
+
+/* Paper texture overlay */
 .paper-texture {
-    background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0);
+    background-image: radial-gradient(rgba(26, 51, 44, 0.04) 1px, transparent 0);
     background-size: 24px 24px;
 }
 
-/* modal simple scale animation */
-@keyframes scale-up {
-    0% { transform: scale(0.9); opacity:0; }
-    100% { transform: scale(1); opacity:1; }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
 }
-.animate-scale-up {
-    animation: scale-up 0.25s ease-out;
+::-webkit-scrollbar-track {
+    background: #FAF6EF;
+}
+::-webkit-scrollbar-thumb {
+    background: #C5A059;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #B08B47;
+}
+
+/* Modal animations */
+@keyframes modalFadeIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.95); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+.animate-modal {
+    animation: modalFadeIn 0.25s ease-out forwards;
+}
+
+/* Golden border gradient styling */
+.gold-gradient-border {
+    border-image: linear-gradient(135deg, #C5A059 0%, #FAF6EF 50%, #C5A059 100%) 1;
 }
